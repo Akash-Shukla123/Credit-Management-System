@@ -28,8 +28,6 @@
       $arr1=mysqli_fetch_array($sql1);
       $credit=$arr1['credit'];
 
-      $sql2=mysqli_query($conn,'select * from user');
-
       $result = mysqli_query($conn,"SELECT SUM(credit) creditSum FROM transfers WHERE uid1 = '$uid' ");
       $row = mysqli_fetch_assoc($result); 
       $sum = $row['creditSum'];
@@ -45,6 +43,7 @@
          <b>Total Credit Shared-</b> &nbsp;$sum <br>
          <b>Phone no. :</b> &nbsp;$phone <br><br>
          ";
+         $sql2=mysqli_query($conn,"select * from user where uid!='$uid' ");
 
          $user_id='';
          $curr='';
